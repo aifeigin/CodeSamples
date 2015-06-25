@@ -36,7 +36,8 @@ namespace Stage1
             }
             if (args[0] == "test3")
             {
-                // to do
+                var test3 = new Test3.Solution();
+                Console.WriteLine(test3.Test1());
             }
            }
            catch(Exception ex)
