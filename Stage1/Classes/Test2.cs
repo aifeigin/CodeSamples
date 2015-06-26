@@ -42,27 +42,7 @@ namespace Test2
 
             int[] bValue =  Decimal2Base(-dValue);
 
-            if (-dValue  != Base2Decimal(bValue)) // For test purposes only
-                Console.WriteLine("Something wrong");
             return bValue;
-        }
-
-        public int[] Test1()
-        {
-            int[] A = new int[] { 1, 0, 0, 1, 1 };
-            return solution(A);
-        }
-
-        public int[] Test2()
-        {
-            int[] A = new int[] { 0, 0, 0, 0, 0, 1 };
-            return solution(A);
-        }
-
-        public int[] Test3()
-        {
-            int[] A = Decimal2Base(100000);
-            return solution(A);
         }
     }
 }

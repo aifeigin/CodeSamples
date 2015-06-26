@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define OPTIMIZED
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Test1
 {
     public class Solution
     {
+#if !OPTIMIZED
         public bool isK(int X, int[] A, int k)
         {
             int equalCnt = 0, nonEqualCnt = 0;
@@ -23,27 +25,35 @@ namespace Test1
             }
             return equalCnt == nonEqualCnt;
         }
+#endif
         public int solution(int X, int[] A)
         {
-            for(int k=0;k<A.Length;k++)
+#if OPTIMIZED            
+            List<int> nonEquailityIndex = new List<int>();
+            int nonEqualityCounter = 0;
+
+            for (int k = A.Length - 1; k >= 0; k--)
             {
-                if (isK(X, A, k))
+                if (A[k] != X)
+                    nonEqualityCounter++;
+                nonEquailityIndex.Add(nonEqualityCounter);
+            }
+            int equalityCounter = 0;
+            for (int k = 0; k < A.Length; k++)
+            {
+                if (A[k] == X)
+                    equalityCounter++;
+                if (equalityCounter > 0 && nonEquailityIndex.ElementAt(A.Length - k - 1) == equalityCounter)
                     return k;
             }
             return -1;
-        }
-
-        public int Test1()
-        {
-            int[] A = new int[] { 5, 5, 1, 7, 2, 3, 5 };
-            return solution(5,A);
-        }
-        public int Test2()
-        {
-            int[] A = new int[100000];
-            for(int i=0;i<A.Length;i++)
-                A[i]=100000;
-            return solution(5, A);
+#else
+            for(int k=0;k<A.Length;k++)
+            {
+                if (isK(X, A, k))
+                   return k;
+            }
+#endif            
         }
     }
 }

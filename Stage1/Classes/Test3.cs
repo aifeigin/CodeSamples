@@ -85,12 +85,5 @@ namespace Test3
             }
             return -1;
         }
-
-        public int Test1()
-        {
-            int[] A=new int[] { 1, 3, 2, 5, 4, 4, 6, 3, 2};
-            return solution(A);
-        }
-
     }
 }
