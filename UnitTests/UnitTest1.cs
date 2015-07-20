@@ -86,5 +86,16 @@ namespace UnitTests
                 B[i] = A[i % A.Length];
             Assert.AreEqual(test.solution(B), 7);
         }
+
+        [TestMethod]
+        public void Test4_TestMethod1()
+        {
+            var test = new Test4.Soluition();
+            int[] A = new int[] { 1, 3, 2, 5, 4, 4, 6, 3, 2 };
+            test.sort(A, 0, A.Length-1);
+            int[] B = (int[])A.Clone();
+            Array.Sort(B);
+            Assert.AreEqual(IsEqual(A,B), true);
+        }
     }
 }

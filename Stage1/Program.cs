@@ -11,6 +11,9 @@ namespace Stage1
     {
         static void Main(string[] args)
         {
+            var trial = new Test5.TrialCalculator();
+
+            trial.Go();
         }
     }
 }
